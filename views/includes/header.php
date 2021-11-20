@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <img src="views/img/avatar.png">
+        <img src="/views/img/avatar.png">
         <div class="logowrapper">
             <span class="logoname">Юрий Сенин</span>
             <span class="logotag">Веб-разработчик</span>

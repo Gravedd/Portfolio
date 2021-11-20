@@ -11,7 +11,7 @@ class ArticlesController
     public function actionView($id) {//экшн: посмореть статью
         $result = Article::getart($id);//получаем результат
         //чтобы вывести, например, заголовок, нужно: echo $result[0]['title'];
-        require_once(ROOT.'/views/article.html');
+        require_once(ROOT.'/views/article.php');
 
         return true;
     }

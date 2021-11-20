@@ -1,0 +1,55 @@
+@media (max-width: 1167px) {
+    .container {
+        padding: 8px;
+        max-width: 100vw;
+    }
+}
+@media (max-width: 950px) {
+    .about, .other {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about .leftside, .about .rightside {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .about .leftside, .aboutart, .otherart {
+        width: 99%;
+    }
+    .about {
+        margin-bottom: 5px;
+    }
+    :root {
+        --scale: 1.015;
+    }
+    .imgwrapper {
+        height: 200px;
+    }
+    footer {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 865px) {
+    .opensourse {
+        margin-left: 0;
+        margin-right: 0;
+        align-self: auto;
+    }
+}
+@media (max-width: 480px) {
+    footer {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    header {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+}
+@media (max-width: 324px) {
+    .opensourse {
+        font-size: 14pt;
+    }
+}

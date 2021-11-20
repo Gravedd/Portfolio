@@ -1,3 +1,11 @@
+<HTML>
+<head>
+    <title>Мой сайт</title>
+    <link href="/views/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/views/css/adaptive.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <?php
 //FRONT CONTROLLER
 //1.Общие настройки
@@ -15,9 +23,8 @@ require_once (ROOT.'/components/db.php');
 //вызов router
 $router = new Router();
 $router ->run();
-?>
-<br><br><br>
 
-<a href="news">News</a>
-<a href="products">Products</a>
-<a href="../">index</a>
+?>
+<body>
+
+

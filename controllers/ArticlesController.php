@@ -1,22 +1,15 @@
 <?php
-require_once ROOT. '/models/news.php';
+require_once ROOT . '/models/article.php';
 class ArticlesController
 {
     public function actionIndex() {
-        echo '<br>actionIndex действие';
+        require_once(ROOT.'/views/index.html');
         return 'true';
     }
     public function actionView($id) {//экшн: посмореть статью
-        echo '<br>Просмотр одной новости';//временно
-        echo "<br>$id - айди новости<br>";//временно
         $result = Article::getart($id);//получаем результат
         //чтобы вывести, например, заголовок, нужно: echo $result[0]['title'];
-        echo "<pre>";//временно
-        var_dump($result);//временно
-        echo "</pre>";//временно
-        /*require_once(ROOT.'/views/news/index.php');*/
-
-
+        require_once(ROOT.'/views/article.html');
 
         return true;
     }

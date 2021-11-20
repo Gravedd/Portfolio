@@ -21,15 +21,6 @@ class Router {
             //сравниваем $urlPattern и $url
             if (preg_match("~$urlpattern~", $url)) {
 
-                /*//определить какой контроллер и action обрабатывают запрос
-                $segments = explode('/', $path);//разбивам путь
-                $controllerName = ucfirst(array_shift($segments)).'Controller';//удаляем первый элемент
-                //и получаем имя контроллера
-                $actionName = 'action'.ucfirst(array_shift($segments));//имя action
-                echo "Имя класса: $controllerName<br>";
-                echo "Имя action: $actionName<br>";
-                var_dump($actionName);*/
-
                 //получить внутренний путь из внешнего согласно правилу
                 $internalRoute = preg_replace("~$urlpattern~", $path, $url);
                 //определить контроллер, экшн, параметры
@@ -39,8 +30,11 @@ class Router {
                 $controllerName = ucfirst($controllerName);
                 //имя экшена
                 $actionName = 'action'.ucfirst(array_shift($segments));
-                echo "<br><small>Контролер: $controllerName <br>Экшен: $actionName </small><br>";
 
+                /*//временно
+                $err[] = "<br><small>Контролер: $controllerName <br>Экшен: $actionName </small><br>";
+                var_dump($err);
+                //конец временно*/
                 $parameters = $segments;//здесь содержится параметры
                 //url: test.ru/news/4343 - в массиве будет 4343
 
@@ -52,7 +46,7 @@ class Router {
                 if (file_exists($controllerFile)) {
                     include_once ($controllerFile);
                 } else {
-                    echo 'файла не существует';
+                    $err[]="ошибка, файла класса-контроллера '$controllerFile' не существует";
                 }
 
 
@@ -66,6 +60,7 @@ class Router {
                 if ($result != null) {
                     break;
                 }
+
 
             }
 

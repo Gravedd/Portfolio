@@ -1,6 +1,6 @@
 <?php
 require_once ROOT. '/models/news.php';
-class NewsController
+class ArticlesController
 {
     public function actionIndex() {
         echo '<br>actionIndex действие';
@@ -9,12 +9,12 @@ class NewsController
     public function actionView($id) {//экшн: посмореть статью
         echo '<br>Просмотр одной новости';//временно
         echo "<br>$id - айди новости<br>";//временно
-        $result = News::getart($id);//получаем результат
+        $result = Article::getart($id);//получаем результат
         //чтобы вывести, например, заголовок, нужно: echo $result[0]['title'];
         echo "<pre>";//временно
         var_dump($result);//временно
         echo "</pre>";//временно
-        require_once(ROOT.'/views/news/index.php');
+        /*require_once(ROOT.'/views/news/index.php');*/
 
 
 

@@ -3,7 +3,9 @@ require_once ROOT . '/models/article.php';
 class ArticlesController
 {
     public function actionIndex() {
-        require_once(ROOT.'/views/index.html');
+        $result = Article::getart(1);//получаем результат
+        require_once(ROOT.'/views/article.php');
+        var_dump($result);//временно
         return 'true';
     }
     public function actionView($id) {//экшн: посмореть статью

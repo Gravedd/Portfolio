@@ -10,10 +10,6 @@ class SiteController
 
         /*Оставшиея статьи. Необходимо настроить в sitemodel, функции getRemainArticles(изменить sql запрос)*/
         $articles = Site::getRemainArticles();
-        echo "<pre>";
-        var_dump($articles);
-        echo "</pre>";
-
 
         require_once(ROOT.'/views/index.php');//подключаем view-контроллер(страница - index(со всеми статьями))
         return 'true';

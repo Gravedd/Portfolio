@@ -5,7 +5,6 @@ class ArticlesController
     public function actionIndex() {
         $result = Article::getart(1);//получаем результат
         require_once(ROOT.'/views/article.php');
-        var_dump($result);//временно
         return 'true';
     }
 

@@ -4,4 +4,4 @@
     <div><a target="_blank" href="https://www.youtube.com/">Youtube</div></a>
     <div class="opensourse"><a target="_blank" href="https://github.com/Gravedd">This website is open source</div></a>
 </footer>
-<script src="js/main.js"></script>
+<script src="views/js/main.js"></script>

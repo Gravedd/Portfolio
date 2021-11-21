@@ -1,10 +1,10 @@
 <header>
     <div class="logo">
         <img src="/views/img/avatar.png">
-        <div class="logowrapper">
+        <a href="../"><div class="logowrapper">
             <span class="logoname">Юрий Сенин</span>
             <span class="logotag">Веб-разработчик</span>
-        </div>
+        </div></a>
 
     </div>
     <div class="uplinks">

@@ -8,7 +8,7 @@ class AdminController extends AdminBase {
             echo '<a href="admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
 //          header('location: admin/login');
         } else {
-            
+
         }
         return 'true';
     }
@@ -17,7 +17,11 @@ class AdminController extends AdminBase {
 
     public function actionLogin() {//фукнция для url: http://portfolio/admin т.е главная страница админки
         echo 'войти';
-        require_once(ROOT.'/views/adminlogin.php');
+        if (AdminBase::checkLogged()) {
+            echo "Вы уже вошли. <a href='admin' class='accenttext2'>Нажмите для перехода в админ-панель</a>";
+        } else {
+            require_once(ROOT.'/views/adminlogin.php');
+        }
         return 'true';
     }
 

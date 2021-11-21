@@ -8,12 +8,15 @@ class ArticlesController
         var_dump($result);//временно
         return 'true';
     }
+
     public function actionView($id) {//экшн: посмореть статью
         $result = Article::getart($id);//получаем результат
         //чтобы вывести, например, заголовок, нужно: echo $result[0]['title'];
         require_once(ROOT.'/views/article.php');
+        Article::updateViews($id);
 
         return true;
     }
+
 }
 ?>

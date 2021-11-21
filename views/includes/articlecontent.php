@@ -5,6 +5,7 @@
         <span>
             <?php echo $result[0]['content']; ?>
         </span><br><br>
-        <span class="dateart"><?php echo $result[0]['pubdate']; ?></span>
+        <span class="dateart">Пост опобликован: <?php echo $result[0]['pubdate']; ?></span><br>
+        <span class="dateart"><small>Просмотров: <?php echo $result[0]['views']; ?></small></span>
     </div>
 </main>

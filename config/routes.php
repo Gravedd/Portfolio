@@ -1,8 +1,17 @@
 <?php
 return array(
-    'articles/([0-9]+)' => 'Articles/view/$1',//
-    /*'news/([0-9]+)' => 'news/view',*/
-    'articles' => 'articles/index',//ActionIndex в ArticlesController
-    '' => 'site/index'//главная страница
+    /*Статья*/
+    'articles/([0-9]+)' => 'Articles/view/$1',
+    'articles' => 'articles/index',
+
+    /*АДМИН*/
+    'admin/login' => 'admin/login',
+    'admin/auth' => 'admin/auth',
+    'admin' => 'admin/index',//админ - главное. Должно стоять в конце
+
+
+    //главная страница
+    'index.php' => 'site/index',
+    '' => 'site/index',//в самом конце
 );
 ?>

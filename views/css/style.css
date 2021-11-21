@@ -258,3 +258,34 @@ footer div:hover {
 .accenttext2 {
     color: var(--cont2-color);
 }
+
+
+/*Админка*/
+.loginform {
+    font-family: Montserrat-light;
+}
+.loginform input {
+    width: 100%;
+    height: 40px;
+    background-color: var(--bg-dop2-color);
+    border-radius: 15px;
+    border: 2px solid black;
+    color: white;
+    margin-bottom: 20px;
+    font-family: Open Sans;
+    letter-spacing: 0.5px;
+}
+.loginform input[type="submit"] {
+    background-image: linear-gradient(to left bottom, var(--cont2-color), var(--cont-color));
+    border: none;
+    font-size: 12pt;
+}
+.loginform input[type="submit"]:hover {
+    box-shadow: 0 0 10px 0 var(--cont2-color);
+}
+.loginform input:hover {
+    box-shadow: 0 0 5px 0 var(--cont-color);
+}
+.loginform input:focus {
+    outline: none;
+}

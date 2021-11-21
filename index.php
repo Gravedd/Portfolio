@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <?php
+session_start();
 //FRONT CONTROLLER
 //1.Общие настройки
 ini_set('display_errors', 1);

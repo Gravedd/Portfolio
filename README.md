@@ -11,3 +11,9 @@ my portfolio
 Панель администратора <br>
 Добавление поста <br>
 Редактирование статьи <br>
+
+
+<small>image size: <br>
+about me: 400x400;<br>
+skills: 513.5x200;<br>
+projects: 513.5x200;<br>

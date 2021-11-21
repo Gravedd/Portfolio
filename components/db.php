@@ -1,7 +1,7 @@
 <?php
 $db = [
     'host' => 'localhost',
-    'dbname' => 'mvctest',
+    'dbname' => 'portfolio',
     'user' => 'Derry',
     'password' => '12345'
 ];

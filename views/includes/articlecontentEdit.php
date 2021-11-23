@@ -15,6 +15,7 @@
             <br>
             <textarea class="thintext" name="content"><?php echo $result[0]['content']; ?></textarea><br>
             <input type="submit" value="Предпросмотр">
+            <input name="id" type="hidden" value="<?php echo $id; ?>">
         </form>
     </div>
 </main>

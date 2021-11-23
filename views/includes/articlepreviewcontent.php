@@ -7,7 +7,17 @@
         </span><br><br>
         <span class="dateart">Пост опобликован: <?php echo $_POST['date']; ?></span><br>
         <span class="dateart"><small>Просмотров: <?php echo $_POST['views']; ?></small></span><br>
-        <a href="" class="buttonbase">Сохранить запись</a>
+
+
+
+        <form method="post" action="saveEditPost" class="editform thintext">
+            <input name="id" type="hidden" value="<?php echo $_POST['id']; ?>">
+            <input name="title" type="hidden" value="<?php echo $_POST['title'];?>">
+            <input name="date" type="hidden" value="<?php echo $_POST['date'];?>">
+            <input name="views" type="hidden" value="<?php echo $_POST['views'];?>">
+            <textarea class="thintext" name="content"><?php echo $_POST['content'];?></textarea><br>
+            <input type="submit" value="Предпросмотр">
+        </form>
 
     </div>
 </main>

@@ -52,6 +52,20 @@ class AdminController extends AdminBase {
         require_once(ROOT.'/views/articlepreview.php');//подключаем view-контроллер
         return true;
     }
+    public function actionSaveEditPost() {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = $_POST['date'];
+        $views = $_POST['views'];
+
+        $result = Admindb::editArticle($id, $title, $content, $date, $views);
+        if (isset($result)) {
+            echo 'Пост был изменен';
+            echo "<a href='../articles/$id' class='thintext accenttext2'>Вернутся к посту</a>";
+        }
+        return true;
+    }
 
 }
 ?>

@@ -20,7 +20,7 @@ require_once(ROOT.'/components/Router.php');
 //3.Установка соед.с бд
 require_once (ROOT.'/components/db.php');
 
-
+require_once ROOT . '/models/adminbase.php';
 //вызов router
 $router = new Router();
 $router ->run();

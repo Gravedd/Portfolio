@@ -1,5 +1,6 @@
 <?php
 require_once ROOT . '/models/adminbase.php';
+require_once ROOT . '/models/admin.php';
 class AdminController extends AdminBase {
 
     public function actionIndex() {//фукнция для url: http://portfolio/admin т.е главная страница админки
@@ -38,6 +39,13 @@ class AdminController extends AdminBase {
             $_SESSION['login'] = $login;
             echo "<a href='../admin' class='accenttext2'>Вы вошли как: '$login'. Нажмите, чтобы продолжить";
         }
+        return true;
+    }
+
+    public function actionEditpost($id) {
+        $result = Admindb::getart($id);//получаем результат
+        var_dump($result);
+        require_once(ROOT.'/views/articleedit.php');//подключаем view-контроллер
         return true;
     }
 

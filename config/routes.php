@@ -7,6 +7,7 @@ return array(
     /*АДМИН*/
     'admin/login' => 'admin/login',
     'admin/auth' => 'admin/auth',
+    'admin/editpost/([0-9]+)' => 'admin/editpost/$1',
     'admin' => 'admin/index',//админ - главное. Должно стоять в конце
 
 

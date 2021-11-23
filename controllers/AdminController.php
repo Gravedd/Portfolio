@@ -52,6 +52,26 @@ class AdminController extends AdminBase {
         require_once(ROOT.'/views/articlepreview.php');//подключаем view-контроллер
         return true;
     }
+    public function actionaddposts() {
+        require_once (ROOT.'/views/addarticle.php');
+        return true;
+    }
+    public function actionnewpostspreview() {
+        require_once (ROOT.'/views/newarticlepreview.php');
+        return true;
+    }
+    public function actionAddnewpost() {
+        var_dump($_POST);
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = $_POST['date'];
+        $result = Admindb::addArticle($title, $content, $date);
+        if (isset($result)) {
+            echo 'Статья успешно добавлена';
+            echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";
+        }
+        return true;
+    }
     public function actionSaveEditPost() {
         $id = $_POST['id'];
         $title = $_POST['title'];

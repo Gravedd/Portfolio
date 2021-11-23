@@ -9,6 +9,9 @@ return array(
     'admin/auth' => 'admin/auth',
     'admin/editprewiew' => 'admin/editpreview',
     'admin/saveEditPost' => 'admin/saveEditPost',
+    'admin/newpostspreview' => 'admin/newpostspreview',
+    'admin/addnewpost' => 'admin/addnewpost',
+    'admin/addposts' => 'admin/addposts',
     'admin/editpost/([0-9]+)' => 'admin/editpost/$1',
     'admin' => 'admin/index',//админ - главное. Должно стоять в конце
 

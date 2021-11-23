@@ -15,5 +15,11 @@ class Admindb {
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
+    public static function AddArticle($title, $content, $pdate) {
+        global $db, $connection;
+        $query = "INSERT INTO `articles` (`title`, `content`, `pubdate`) VALUES ('$title', '$content', '$pdate')";
+        $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
+        return $data;
+    }
 }
 ?>

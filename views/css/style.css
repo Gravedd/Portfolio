@@ -321,3 +321,40 @@ footer div:hover {
     transition: 0.5s;
     background-color: var(--cont-color);
 }
+.editform input, .editform textarea {
+    max-width: 100%;
+    width: 100%;
+    height: 50px;
+    background-color: var(--bg-dop2-color);
+    border: 2px solid var(--cont2-color);
+    border-radius: 10px;
+    color: white;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    transition: 0.25s;
+}
+.editform input:focus, .editform textarea:focus, .editform input:hover, .editform textarea:hover, .editform input[type='submit']:hover {
+    outline: none;
+    box-shadow: 0 0 10px 0 var(--cont2-color);
+}
+.editform textarea {
+    min-width: 100%;
+    min-height: 300px;
+    height: auto;
+}
+.buttonbase {
+    background-color: var(--cont2-color);
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 10px;
+    display: block;
+    text-shadow: 0px 1px 5px black;
+    transition: 0.25s;
+}
+.buttonbase:hover {
+    transition: 0.5s;
+    box-shadow: 0 0 5px 0 var(--cont-color);
+    transform: scale(1.01);
+}

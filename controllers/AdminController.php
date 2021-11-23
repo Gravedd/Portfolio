@@ -48,6 +48,10 @@ class AdminController extends AdminBase {
         require_once(ROOT.'/views/articleedit.php');//подключаем view-контроллер
         return true;
     }
+    public function actionEditpreview() {
+        require_once(ROOT.'/views/articlepreview.php');//подключаем view-контроллер
+        return true;
+    }
 
 }
 ?>

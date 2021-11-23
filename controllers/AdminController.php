@@ -8,7 +8,7 @@ class AdminController extends AdminBase {
             echo '<a href="admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
 //          header('location: admin/login');
         } else {
-
+            require_once(ROOT.'/views/admin.php');
         }
         return 'true';
     }

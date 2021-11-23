@@ -38,7 +38,6 @@ body {
 .container {
     background-color: var(--bg-color);
     max-width: 1150px;
-    height: 1000px;
     margin: 0 auto;
     opacity: 1.0;
     padding-top: 25px;
@@ -244,7 +243,7 @@ footer div:hover {
 }
          /*стили для оформления*/
 .thintext {
-    font-family: font-family: Montserrat-light;
+    font-family: Montserrat-light;
 }
 .spacedtext {
     letter-spacing: 1px;
@@ -288,4 +287,37 @@ footer div:hover {
 }
 .loginform input:focus {
     outline: none;
+}
+.adminactions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid var(--cont2-color);
+    border-radius: 16px;
+    padding: 8px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.admAction {
+    height: 50px;
+    margin-right: 8px;
+    min-width: 200px;
+    padding: 0 20px;
+    text-align: center;
+    background-color: var(--cont2-color);
+    border-radius: 8px;
+    transition: 0.2s;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+.admAction:last-child {
+    margin-right: 0;
+}
+.admAction a {
+    line-height: 50px;
+}
+.admAction:hover {
+    transform: scale(var(--scale));
+    transition: 0.5s;
+    background-color: var(--cont-color);
 }

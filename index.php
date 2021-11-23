@@ -27,5 +27,6 @@ $router ->run();
 
 ?>
 <body>
+<a href="admin">админка</a>
 
 

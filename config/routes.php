@@ -12,6 +12,8 @@ return array(
     'admin/newpostspreview' => 'admin/newpostspreview',
     'admin/addnewpost' => 'admin/addnewpost',
     'admin/addposts' => 'admin/addposts',
+    'admin/allposts' => 'admin/seeall',
+    'admin/logout' => 'admin/logout',
     'admin/deletepost/([0-9]+)' => 'admin/deletepost/$1',
     'admin/editpost/([0-9]+)' => 'admin/editpost/$1',
     'admin' => 'admin/index',//админ - главное. Должно стоять в конце

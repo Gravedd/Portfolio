@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <HTML>
 <head>
     <title>Мой сайт</title>

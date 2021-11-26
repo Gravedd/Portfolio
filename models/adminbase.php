@@ -4,6 +4,7 @@ abstract class AdminBase {
         if (isset($_SESSION['auth'])) {
             return true;
         } else {
+            echo 'Вы не вошли';
             return false;
         }
     }

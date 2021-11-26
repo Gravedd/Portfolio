@@ -27,6 +27,13 @@ class Admindb {
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
+    public static function getAllPosts() {
+        global $db, $connection;
+        $query = "SELECT * FROM articles where `id`>0";//sql запрос
+        $result = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
+        for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);//конверируем полученные данные в массив
+        return $data;
 
+    }
 }
 ?>

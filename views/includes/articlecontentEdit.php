@@ -13,7 +13,7 @@
             <input name="views" type="number" value="<?php echo $result[0]['views']; ?>"><br>
             Текст статьи<b class="accenttext" title="Разрешается использование тегов и др"> ? </b>
             <br>
-            <textarea class="thintext" name="content"><?php echo $result[0]['content']; ?></textarea><br>
+            <textarea id="content" class="thintext" name="content"><?php echo $result[0]['content']; ?></textarea><br>
             <input type="submit" value="Предпросмотр">
             <input name="id" type="hidden" value="<?php echo $id; ?>">
         </form>

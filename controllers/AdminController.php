@@ -6,7 +6,7 @@ class AdminController extends AdminBase {
     public function actionIndex() {//фукнция для url: http://portfolio/admin т.е главная страница админки
         if (!isset($_SESSION['auth'])) {//если админ не авторизован
             echo 'вы не авторизованны';
-            echo '<a href="admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
+            echo '<a href="../../admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
 //          header('location: admin/login');
         } else {
             require_once(ROOT.'/views/admin.php');
@@ -43,52 +43,77 @@ class AdminController extends AdminBase {
     }
 
     public function actionEditpost($id) {
-        $result = Admindb::getart($id);//получаем результат
-        var_dump($result);
-        require_once(ROOT.'/views/articleedit.php');//подключаем view-контроллер
+        if (AdminBase::checkLogged()) {
+            $result = Admindb::getart($id);//получаем результат
+            var_dump($result);
+            require_once(ROOT . '/views/articleedit.php');//подключаем view-контроллер
+        }
         return true;
     }
     public function actionEditpreview() {
-        require_once(ROOT.'/views/articlepreview.php');//подключаем view-контроллер
+        if (AdminBase::checkLogged()) {
+            require_once(ROOT . '/views/articlepreview.php');//подключаем view-контроллер
+        }
         return true;
     }
     public function actionaddposts() {
-        require_once (ROOT.'/views/addarticle.php');
+        if (AdminBase::checkLogged()) {
+            require_once(ROOT . '/views/addarticle.php');
+        }
         return true;
     }
     public function actionnewpostspreview() {
-        require_once (ROOT.'/views/newarticlepreview.php');
+        if (AdminBase::checkLogged()) {
+            require_once(ROOT . '/views/newarticlepreview.php');
+        }
         return true;
     }
     public function actionAddnewpost() {
-        var_dump($_POST);
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $date = $_POST['date'];
-        $result = Admindb::addArticle($title, $content, $date);
-        if (isset($result)) {
-            echo 'Статья успешно добавлена';
-            echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";
+        if (AdminBase::checkLogged()) {
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $date = $_POST['date'];
+            $result = Admindb::addArticle($title, $content, $date);
+            if (isset($result)) {
+                echo 'Статья успешно добавлена';
+                echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";
+            }
         }
         return true;
     }
     public function actionSaveEditPost() {
-        $id = $_POST['id'];
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $date = $_POST['date'];
-        $views = $_POST['views'];
+        if (AdminBase::checkLogged()) {
+            $id = $_POST['id'];
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $date = $_POST['date'];
+            $views = $_POST['views'];
 
-        $result = Admindb::editArticle($id, $title, $content, $date, $views);
-        if (isset($result)) {
-            echo 'Пост был изменен';
-            echo "<a href='../articles/$id' class='thintext accenttext2'>Вернутся к посту</a>";
+            $result = Admindb::editArticle($id, $title, $content, $date, $views);
+            if (isset($result)) {
+                echo 'Пост был изменен';
+                echo "<a href='../articles/$id' class='thintext accenttext2'>Вернутся к посту</a>";
+            }
         }
         return true;
     }
     public function actionDeletepost($id) {
-        Admindb::deleteArticle($id);
-        echo 'Статья удалена';
+        if (AdminBase::checkLogged()) {
+            Admindb::deleteArticle($id);
+            echo 'Статья удалена';
+        }
+        return true;
+    }
+    public function actionSeeAll() {
+        if (AdminBase::checkLogged()) {
+            $posts = Admindb::getAllPosts();
+            require_once(ROOT . '/views/AllArticles.php');
+        }
+        return true;
+    }
+    public function actionLogout() {
+        $_SESSION['auth'] = null;
+        $_SESSION['login'] = null;
         return true;
     }
 

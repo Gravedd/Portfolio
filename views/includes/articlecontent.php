@@ -1,7 +1,7 @@
 <main>
     <h1 class="h2-like"><?php echo $result[0]['title']; ?></h1>
     <div class="articlewrapper">
-        <div class="articleMainImage" style="background-image: "></div>
+        <div class="articleMainImage" style="background-image: url('../../uploads/images/<?php echo $result[0]['image']; ?>');"></div>
         <span>
             <?php echo $result[0]['content']; ?>
         </span><br><br>
@@ -13,3 +13,5 @@
         <?php }?>
     </div>
 </main>
+<?php
+var_dump($result);?>

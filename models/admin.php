@@ -21,5 +21,12 @@ class Admindb {
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
+    public static function deleteArticle($id) {
+        global $db, $connection;
+        $query = "DELETE FROM `articles` WHERE `articles`.`id` = '$id'";
+        $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
+        return $data;
+    }
+
 }
 ?>

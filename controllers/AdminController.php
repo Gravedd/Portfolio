@@ -86,6 +86,11 @@ class AdminController extends AdminBase {
         }
         return true;
     }
+    public function actionDeletepost($id) {
+        Admindb::deleteArticle($id);
+        echo 'Статья удалена';
+        return true;
+    }
 
 }
 ?>

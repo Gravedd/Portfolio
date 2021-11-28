@@ -13,5 +13,3 @@
         <?php }?>
     </div>
 </main>
-<?php
-var_dump($result);?>

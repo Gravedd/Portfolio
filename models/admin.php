@@ -15,9 +15,9 @@ class Admindb {
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
-    public static function AddArticle($title, $content, $pdate) {
+    public static function AddArticle($title, $content, $pdate, $filename) {
         global $db, $connection;
-        $query = "INSERT INTO `articles` (`title`, `content`, `pubdate`) VALUES ('$title', '$content', '$pdate')";
+        $query = "INSERT INTO `articles` (`title`, `content`, `pubdate`, `image`) VALUES ('$title', '$content', '$pdate', '$filename')";
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
@@ -33,7 +33,15 @@ class Admindb {
         $result = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);//конверируем полученные данные в массив
         return $data;
-
     }
+    public static function viewCount() {
+        global $db, $connection;
+        $query = "SELECT SUM(`views`) FROM articles";
+        $result = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
+        $data = mysqli_fetch_assoc($result);
+
+        return $data;
+    }
+
 }
 ?>

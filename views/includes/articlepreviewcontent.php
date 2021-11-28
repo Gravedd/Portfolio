@@ -1,7 +1,8 @@
 <main>
     <h1 class="h2-like"><?php echo $_POST['title'];?></h1>
     <div class="articlewrapper">
-        <div class="articleMainImage" style="background-image: "></div>
+        <div class="articleMainImage" style="background-image:"></div>
+
         <span>
             <?php echo $_POST['content']; ?>
         </span><br><br>

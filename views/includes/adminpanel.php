@@ -10,6 +10,6 @@
             <div class="admAction"><a href="admin/logout">Выйти из аккаунта</a></div>
         </div>
         <h2 class="accenttext2 spacedtext thintext">Статистика</h2>
-        <span class="thintext">Общее кол-во просмотров у статей: 34 просмотра</span>
+        <span class="thintext">Общее кол-во просмотров у статей: <?php echo $count["SUM(`views`)"]; ?></span>
     </div>
 </main>

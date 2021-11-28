@@ -1,7 +1,7 @@
 <main>
     <h1 class="h2-like"><?php echo $_POST['title'];?></h1>
     <div class="articlewrapper">
-        <div class="articleMainImage" style="background-image: "></div>
+        <div class="articleMainImage" style="background-image: url('..//uploads/temp/<?php echo $filename; ?>');"></div>
         <span>
             <?php echo $_POST['content']; ?>
         </span><br><br>
@@ -13,7 +13,8 @@
         <form method="post" action="addnewpost" class="editform thintext">
             <input name="title" type="hidden" value="<?php echo $_POST['title'];?>">
             <input name="date" type="hidden" value="<?php echo $_POST['date'];?>">
-            <textarea class="thintext" name="content"><?php echo $_POST['content'];?></textarea><br>
+            <input name="imgname" type="hidden" value="<?php echo $filename; ?>">
+            <textarea hidden class="thintext" name="content"><?php echo $_POST['content'];?></textarea><br>
             <input type="submit" value="Сохранить пост">
         </form>
 

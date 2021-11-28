@@ -9,6 +9,7 @@ class AdminController extends AdminBase {
             echo '<a href="../../admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
 //          header('location: admin/login');
         } else {
+            $count = Admindb::viewCount();
             require_once(ROOT.'/views/admin.php');
         }
         return 'true';
@@ -64,6 +65,12 @@ class AdminController extends AdminBase {
     }
     public function actionnewpostspreview() {
         if (AdminBase::checkLogged()) {
+            //изображение
+            $from = $_FILES['imagefile']['tmp_name'];//где находится файл
+            $filename = uniqid().'.png';//имя файла
+            $to = ROOT."/uploads/temp/$filename";//куда переместить файл
+            rename($from, $to);//перемещаем файл
+
             require_once(ROOT . '/views/newarticlepreview.php');
         }
         return true;
@@ -73,7 +80,12 @@ class AdminController extends AdminBase {
             $title = $_POST['title'];
             $content = $_POST['content'];
             $date = $_POST['date'];
-            $result = Admindb::addArticle($title, $content, $date);
+            $filename = $_POST['imgname'];
+            $from = ROOT."/uploads/temp/$filename";
+            $to = ROOT."/uploads/images/$filename";//куда переместить файл
+            var_dump($filename);
+            rename($from, $to);//перемещаем файл
+            $result = Admindb::addArticle($title, $content, $date, $filename);
             if (isset($result)) {
                 echo 'Статья успешно добавлена';
                 echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";

@@ -12,8 +12,8 @@
             <br>
             <textarea class="thintext" name="content"></textarea><br>
 
-            <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-            <input name="imagefile" type="file"/>
+            <input type="hidden" name="MAX_FILE_SIZE" value="3000000">
+            <input name="imagefile" type="file">
             <input type="submit" value="Предпросмотр">
         </form>
     </div>

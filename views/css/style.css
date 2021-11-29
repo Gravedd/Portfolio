@@ -239,6 +239,7 @@ footer div:hover {
     border-radius: 5px;
     background-size: contain;
     margin-bottom: 8px;
+    background-repeat: no-repeat;
 }
 .articlewrapper img {
     margin-bottom: 8px;

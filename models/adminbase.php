@@ -8,4 +8,11 @@ abstract class AdminBase {
             return false;
         }
     }
+    public static function checkLoggedNomess(){
+        if (isset($_SESSION['auth'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

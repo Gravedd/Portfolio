@@ -53,6 +53,11 @@ class AdminController extends AdminBase {
     }
     public function actionEditpreview() {
         if (AdminBase::checkLogged()) {
+            //изображение
+            $from = $_FILES['imagefile']['tmp_name'];//где находится файл
+            $filename = uniqid().'.png';//имя файла
+            $to = ROOT."/uploads/temp/$filename";//куда переместить файл
+            rename($from, $to);//перемещаем файл
             require_once(ROOT . '/views/articlepreview.php');//подключаем view-контроллер
         }
         return true;
@@ -80,11 +85,12 @@ class AdminController extends AdminBase {
             $title = $_POST['title'];
             $content = $_POST['content'];
             $date = $_POST['date'];
+
             $filename = $_POST['imgname'];
             $from = ROOT."/uploads/temp/$filename";
             $to = ROOT."/uploads/images/$filename";//куда переместить файл
-            var_dump($filename);
             rename($from, $to);//перемещаем файл
+
             $result = Admindb::addArticle($title, $content, $date, $filename);
             if (isset($result)) {
                 echo 'Статья успешно добавлена';
@@ -101,7 +107,12 @@ class AdminController extends AdminBase {
             $date = $_POST['date'];
             $views = $_POST['views'];
 
-            $result = Admindb::editArticle($id, $title, $content, $date, $views);
+            $filename = $_POST['imgname'];
+            $from = ROOT."/uploads/temp/$filename";
+            $to = ROOT."/uploads/images/$filename";//куда переместить файл
+            rename($from, $to);//перемещаем файл
+
+            $result = Admindb::editArticle($id, $title, $content, $date, $views, $filename);
             if (isset($result)) {
                 echo 'Пост был изменен';
                 echo "<a href='../articles/$id' class='thintext accenttext2'>Вернутся к посту</a>";

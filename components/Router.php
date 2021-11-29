@@ -20,44 +20,18 @@ class Router {
         foreach ($this->routes as $urlpattern => $path) {
             //сравниваем $urlPattern и $url
             if (preg_match("~$urlpattern~", $url)) {
-                echo "<pre>";
-                var_dump($url);
-                echo "</pre>";
-
                 //получить внутренний путь из внешнего согласно правилу
                 $internalRoute = preg_replace("~$urlpattern~", $path, $url);
                 //определить контроллер, экшн, параметры
-                echo "<pre>";
-                var_dump($internalRoute);
-                echo "</pre>";
 
                 $segments = explode('/', $internalRoute);
                 //имя контроллера
-                echo "<pre>";
-                var_dump($segments);
-                echo "</pre>";
                 $controllerName = array_shift($segments).'Controller';
-                echo "<pre>";
-                var_dump($controllerName);
-                echo "</pre>";
                 $controllerName = ucfirst($controllerName);
-                echo "<pre>";
-                var_dump($controllerName);
-                echo "</pre>";
                 //имя экшена
                 $actionName = 'action'.ucfirst(array_shift($segments));
-                echo "<pre>";
-                var_dump($actionName);
-                echo "</pre>";
-
-                /*//временно
-                $err[] = "<br><small>Контролер: $controllerName <br>Экшен: $actionName </small><br>";
-                var_dump($err);
-                //конец временно*/
                 $parameters = $segments;//здесь содержится параметры
                 //url: test.ru/news/4343 - в массиве будет 4343
-
-
 
 
                 //подключить файл класса-контроллера
@@ -68,15 +42,16 @@ class Router {
                     $err[]="ошибка, файла класса-контроллера '$controllerFile' не существует";
                 }
 
-
-
                 //создать объект, вызвать метод(action)
-
                 $controllerObject = new $controllerName;
+
+
                 /* Вызываем необходимый метод ($actionName) у определенного
                  * класса ($controllerObject) с заданными ($parameters) параметрами
                  */
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
+
                 /*
                  * проверка на получаение результата от экшена от какого-либо контроллера
                  * если результата не будет то получится ошибка

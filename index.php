@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <HTML>
 <head>
-    <title>Мой сайт</title>
+    <title>Юрий Сенин — Веб-разработчик</title>
     <link href="/views/css/style.css" rel="stylesheet" type="text/css">
     <link href="/views/css/adaptive.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
@@ -27,7 +27,6 @@ $router = new Router();
 $router ->run();
 
 ?>
-<body>
-<a href="admin">админка</a>
+<body class="1">
 
 

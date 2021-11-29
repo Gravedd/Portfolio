@@ -4,10 +4,8 @@ require_once ROOT . '/models/admin.php';
 class AdminController extends AdminBase {
 
     public function actionIndex() {//фукнция для url: http://portfolio/admin т.е главная страница админки
-        if (!isset($_SESSION['auth'])) {//если админ не авторизован
-            echo 'вы не авторизованны';
+        if (!AdminBase::checkLogged()) {//если админ не авторизован
             echo '<a href="../../admin/login" class="accenttext2"> Нажмите чтобы войти </a>';
-//          header('location: admin/login');
         } else {
             $count = Admindb::viewCount();
             require_once(ROOT.'/views/admin.php');
@@ -17,9 +15,8 @@ class AdminController extends AdminBase {
 
 
 
-    public function actionLogin() {//фукнция для url: http://portfolio/admin т.е главная страница админки
-        echo 'войти';
-        if (AdminBase::checkLogged()) {
+    public function actionLogin() {
+        if (AdminBase::checkLoggedNomess()) {
             echo "Вы уже вошли. <a href='admin' class='accenttext2'>Нажмите для перехода в админ-панель</a>";
         } else {
             require_once(ROOT.'/views/adminlogin.php');
@@ -28,7 +25,6 @@ class AdminController extends AdminBase {
     }
 
     public function actionAuth() {
-        var_dump($_POST);
         global $db, $connection;
         $login = $_POST['login'];
         $pass = $_POST['password'];
@@ -39,6 +35,9 @@ class AdminController extends AdminBase {
             $_SESSION['auth'] = true;
             $_SESSION['login'] = $login;
             echo "<a href='../admin' class='accenttext2'>Вы вошли как: '$login'. Нажмите, чтобы продолжить";
+        } else {
+            echo "<span class='accenttext2'>Не верный логин/пароль</span><br>";
+            echo "<a href='../admin/login' class='accenttext'>Нажмите чтобы войти</a><br>";
         }
         return true;
     }
@@ -46,7 +45,6 @@ class AdminController extends AdminBase {
     public function actionEditpost($id) {
         if (AdminBase::checkLogged()) {
             $result = Admindb::getart($id);//получаем результат
-            var_dump($result);
             require_once(ROOT . '/views/articleedit.php');//подключаем view-контроллер
         }
         return true;
@@ -137,6 +135,9 @@ class AdminController extends AdminBase {
     public function actionLogout() {
         $_SESSION['auth'] = null;
         $_SESSION['login'] = null;
+        echo "<span class=''>Вы вышли из аккаунта</span><br>";
+        echo "<a href='../../' class='accenttext2'>Нажмите для перехода на главную</a><br>";
+        echo "<a href='../admin/login' class='accenttext'>Нажмите чтобы войти</a><br>";
         return true;
     }
 

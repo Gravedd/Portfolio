@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Юрий Сенин — сайт веб-разработчика. HTML, CSS, JS, PHP...">
 </head>
 <?php
 session_start();
@@ -28,6 +29,7 @@ $router = new Router();
 $router ->run();
 
 ?>
-<body class="1">
+<body>
+
 
 

@@ -15,6 +15,12 @@ class Admindb {
         $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
         return $data;
     }
+    public static function editArticleNoimg($id, $title, $content,$pdate, $views) {
+        global $db, $connection;
+        $query = "UPDATE `articles` SET `title` = '$title', `content` = '$content', `pubdate` = '$pdate', `views` = '$views' WHERE `articles`.`id` = $id;";//sql запрос
+        $data = mysqli_query($connection, $query) or die(mysqli_error($connection));//получаем данные
+        return $data;
+    }
     public static function AddArticle($title, $content, $pdate, $filename) {
         global $db, $connection;
         $query = "INSERT INTO `articles` (`title`, `content`, `pubdate`, `image`) VALUES ('$title', '$content', '$pdate', '$filename')";

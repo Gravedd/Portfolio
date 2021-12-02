@@ -1,2 +1,1 @@
-# Custom 404 Not Found Error Page
-ErrorDocument 404 https://profreehost.com/404/index.php
+# Включаем перенаправлениеRewriteEngine On# Не применять к существующим файлам файламRewriteCond %{REQUEST_FILENAME} !-f# Не применять к существующим директориямRewriteCond %{REQUEST_FILENAME} !-d# Редирект всех запросов на index.php# L означает Last, нужен чтобы на этом этапе mod_rewrite сразу остановил работу.# Короче, небольшое увеличение производительности.RewriteRule .* index.php [L]ErrorDocument 404 https://404

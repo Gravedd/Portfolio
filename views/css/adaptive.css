@@ -51,6 +51,17 @@
         align-items: center;
         margin-bottom: 5px;
     }
+    .imgwrapper, .leftside .imgwrapper {
+        background-size: 400%;
+        background-position: -483.5%;
+    }
+    .logo {
+        width: auto;
+    }
+    .uplinks {
+        width: auto;
+        justify-content: center;
+    }
 }
 @media (max-width: 324px) {
     .opensourse {

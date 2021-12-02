@@ -14,8 +14,5 @@ class SiteController
         require_once(ROOT.'/views/index.php');//подключаем view-контроллер(страница - index(со всеми статьями))
         return 'true';
     }
-
-
-
 }
 ?>

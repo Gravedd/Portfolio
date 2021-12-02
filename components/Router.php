@@ -1,19 +1,24 @@
 <?php
-class Router {
+
+class Router
+{
     private $routes;
+
     public function __construct()
     {
-        $routesPath = ROOT.'/config/routes.php';//путь до роутов
-        $this->routes = include ($routesPath); // подлючаем роуты
+        $routesPath = ROOT . '/config/routes.php';//путь до роутов
+        $this->routes = include($routesPath); // подлючаем роуты
     }
 
-    private function getUrl() {//получить url(пример инкапсуляции)
+    private function getUrl()
+    {//получить url
         if (!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
         }
     }
 
-    public function run(){
+    public function run()
+    {
         //получить строку запроса
         $url = $this->getUrl();//получаем url
         //проверить наличие такого запроса в routes.php
@@ -26,20 +31,20 @@ class Router {
 
                 $segments = explode('/', $internalRoute);
                 //имя контроллера
-                $controllerName = array_shift($segments).'Controller';
+                $controllerName = array_shift($segments) . 'Controller';
                 $controllerName = ucfirst($controllerName);
                 //имя экшена
-                $actionName = 'action'.ucfirst(array_shift($segments));
+                $actionName = 'action' . ucfirst(array_shift($segments));
                 $parameters = $segments;//здесь содержится параметры
                 //url: test.ru/news/4343 - в массиве будет 4343
 
 
                 //подключить файл класса-контроллера
-                $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
+                $controllerFile = ROOT . '/controllers/' . $controllerName . '.php';
                 if (file_exists($controllerFile)) {
-                    include_once ($controllerFile);
+                    include_once($controllerFile);
                 } else {
-                    $err[]="ошибка, файла класса-контроллера '$controllerFile' не существует";
+                    $err[] = "ошибка, файла класса-контроллера '$controllerFile' не существует";
                 }
 
                 //создать объект, вызвать метод(action)
@@ -47,9 +52,14 @@ class Router {
 
 
                 /* Вызываем необходимый метод ($actionName) у определенного
-                 * класса ($controllerObject) с заданными ($parameters) параметрами
+                 * класса ($controllerObject) с заданными ($parameters) параметрами,
+                 * если он существует, иначе ошибка 404
                  */
-                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                if (method_exists($controllerObject, $actionName)) {
+                    $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                } else {
+                    $this->error404();
+                }
 
 
                 /*
@@ -66,14 +76,15 @@ class Router {
             }
 
 
-
-
-
-
         }
 
 
-
+    }
+    /*ОШИБКА 404*/
+    public function error404() {
+        require_once ROOT.'/views/error404.php';
+        header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+        exit;
     }
 
 }

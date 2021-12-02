@@ -4,7 +4,9 @@ require_once ROOT . '/models/admin.php';
 
 class AdminController extends AdminBase
 {
-
+    /*ГЛАВНАЯ СТРАНИЦА АДМИНКИ
+     * выполняется проверка, если админ не вошел, то потребовать авторизацию
+     * */
     public function actionIndex()
     {//фукнция для url: http://portfolio/admin т.е главная страница админки
         if (!AdminBase::checkLogged()) {//если админ не авторизован
@@ -16,7 +18,9 @@ class AdminController extends AdminBase
         return 'true';
     }
 
-
+    /*АВТОРИЗАЦИЯ
+    *
+    */
     public function actionLogin()
     {
         if (AdminBase::checkLoggedNomess()) {
@@ -27,6 +31,11 @@ class AdminController extends AdminBase
         return 'true';
     }
 
+    /*ПРОВЕРКА АВТОРИЗАЦИИ
+     * из формы авторизации приходят, логин и пароль.
+     * Если в бд оказывается аккаунт, то авторизоватся
+     * иначе выписать ошибку
+     */
     public function actionAuth()
     {
         global $db, $connection;
@@ -46,6 +55,22 @@ class AdminController extends AdminBase
         return true;
     }
 
+    /*ВЫХОД ИЗ АККАУНТА
+     * обнулить сессию
+     */
+    public function actionLogout()
+    {
+        $_SESSION['auth'] = null;
+        $_SESSION['login'] = null;
+        echo "<span class=''>Вы вышли из аккаунта</span><br>";
+        echo "<a href='../../' class='accenttext2'>Нажмите для перехода на главную</a><br>";
+        echo "<a href='../admin/login' class='accenttext'>Нажмите чтобы войти</a><br>";
+        return true;
+    }
+
+    /*ОТРЕДАКТИРОВАТЬ ПОСТ(вызвать форму редактирования поста)
+     * вход - айди статьи
+     */
     public function actionEditpost($id)
     {
         if (AdminBase::checkLogged()) {
@@ -55,6 +80,11 @@ class AdminController extends AdminBase
         return true;
     }
 
+
+
+    /*ПРЕВЬЮ ОТРЕДАКТИРОВАННОГО ПОСТА
+     * из формы приходят данные
+     */
     public function actionEditpreview()
     {
         if (AdminBase::checkLogged()) {
@@ -76,49 +106,11 @@ class AdminController extends AdminBase
         return true;
     }
 
-    public function actionaddposts()
-    {
-        if (AdminBase::checkLogged()) {
-            require_once(ROOT . '/views/addarticle.php');
-        }
-        return true;
-    }
-
-    public function actionnewpostspreview()
-    {
-        if (AdminBase::checkLogged()) {
-            //изображение
-            $from = $_FILES['imagefile']['tmp_name'];//где находится файл
-            $filename = uniqid() . '.png';//имя файла
-            $to = ROOT . "/uploads/temp/$filename";//куда переместить файл
-            rename($from, $to);//перемещаем файл
-
-            require_once(ROOT . '/views/newarticlepreview.php');
-        }
-        return true;
-    }
-
-    public function actionAddnewpost()
-    {
-        if (AdminBase::checkLogged()) {
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $date = $_POST['date'];
-
-            $filename = $_POST['imgname'];
-            $from = ROOT . "/uploads/temp/$filename";
-            $to = ROOT . "/uploads/images/$filename";//куда переместить файл
-            rename($from, $to);//перемещаем файл
-
-            $result = Admindb::addArticle($title, $content, $date, $filename);
-            if (isset($result)) {
-                echo 'Статья успешно добавлена';
-                echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";
-            }
-        }
-        return true;
-    }
-
+    /*СОХРАНИТЬ ИЗМЕНЕННЫЙ ПОСТ
+     * из формы приходят данные
+     * Вызывается метод изменить статью в бд
+     * если картинка не загруженна, то вызывается метод редактирования статьи без изменения изображения
+     */
     public function actionSaveEditPost()
     {
         if (AdminBase::checkLogged()) {
@@ -145,15 +137,73 @@ class AdminController extends AdminBase
         return true;
     }
 
+    /*СОЗДАТЬ НОВЫЙ ПОСТ
+     *
+     */
+    public function actionaddposts()
+    {
+        if (AdminBase::checkLogged()) {
+            require_once(ROOT . '/views/addarticle.php');
+        }
+        return true;
+    }
+    /*ПРЕВЬЮ НОВОГО ПОСТА
+     * данные - из формы
+     */
+    public function actionnewpostspreview()
+    {
+        if (AdminBase::checkLogged()) {
+            //изображение
+            $from = $_FILES['imagefile']['tmp_name'];//где находится файл
+            $filename = uniqid() . '.png';//имя файла
+            $to = ROOT . "/uploads/temp/$filename";//куда переместить файл
+            rename($from, $to);//перемещаем файл
+
+            require_once(ROOT . '/views/newarticlepreview.php');
+        }
+        return true;
+    }
+
+
+    /*ДОБАВИТЬ НОВЫЙ ПОСТ В БД
+     * данные - из формы
+     */
+    public function actionAddnewpost()
+    {
+        if (AdminBase::checkLogged()) {
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $date = $_POST['date'];
+
+            $filename = $_POST['imgname'];
+            $from = ROOT . "/uploads/temp/$filename";
+            $to = ROOT . "/uploads/images/$filename";//куда переместить файл
+            rename($from, $to);//перемещаем файл
+
+            $result = Admindb::addArticle($title, $content, $date, $filename);
+            if (isset($result)) {
+                echo 'Статья успешно добавлена';
+                echo "<a href='../' class='thintext accenttext2'>Вернутся на главную</a>";
+            }
+        }
+        return true;
+    }
+    /*УДАЛИТЬ ПОСТ
+     * входные данные: id статьи
+     */
     public function actionDeletepost($id)
     {
         if (AdminBase::checkLogged()) {
             Admindb::deleteArticle($id);
             echo 'Статья удалена';
+            echo '<a href="">Вернутся на главную</a>';
         }
         return true;
     }
 
+    /*ДЕЙСТВИЕ: ПОСМОТРЕТЬ ВСЕ ПОСТЫ
+     *
+     */
     public function actionSeeAll()
     {
         if (AdminBase::checkLogged()) {
@@ -162,17 +212,6 @@ class AdminController extends AdminBase
         }
         return true;
     }
-
-    public function actionLogout()
-    {
-        $_SESSION['auth'] = null;
-        $_SESSION['login'] = null;
-        echo "<span class=''>Вы вышли из аккаунта</span><br>";
-        echo "<a href='../../' class='accenttext2'>Нажмите для перехода на главную</a><br>";
-        echo "<a href='../admin/login' class='accenttext'>Нажмите чтобы войти</a><br>";
-        return true;
-    }
-
 }
 
 ?>

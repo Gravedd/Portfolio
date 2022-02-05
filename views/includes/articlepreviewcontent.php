@@ -4,7 +4,7 @@
         <?php if (!isset($noimg)) { ?>
         <div class="articleMainImage" style="background-image: url('..//uploads/temp/<?php echo $filename; ?>');"></div>
         <?php } else { ?>
-        <div class="articleMainImage" style="background-image: url('..//uploads/images/<?php echo $filename; ?>');"></div>
+        <div class="articleMainImage" style="background-image: url('..//uploads/images/<?php echo $filename; ?>'); text-align: center">Нет изменений</div>
         <?php } ?>
 
         <span>

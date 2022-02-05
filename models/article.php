@@ -11,10 +11,6 @@ class Article
         return array($data);//возращаем массив
     }
 
-    //возращает список новостей
-    public function getNewsList(){
-        echo 'f';
-    }
     //Счетчик просмотров. Увеливает на 1 поле views в статье в таким айди
     public static function updateViews($id) {
         global $db, $connection;

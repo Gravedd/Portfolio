@@ -154,11 +154,12 @@ class AdminController extends AdminBase
     {
         if (AdminBase::checkLogged()) {
             //изображение
-            $from = $_FILES['imagefile']['tmp_name'];//где находится файл
-            $filename = uniqid() . '.png';//имя файла
-            $to = ROOT . "/uploads/temp/$filename";//куда переместить файл
-            rename($from, $to);//перемещаем файл
-
+            if (!empty($_FILES['imagefile']['tmp_name'])) {
+                $from = $_FILES['imagefile']['tmp_name'];//где находится файл
+                $filename = uniqid() . '.png';//имя файла
+                $to = ROOT . "/uploads/temp/$filename";//куда переместить файл
+                rename($from, $to);//перемещаем файл
+            }
             require_once(ROOT . '/views/newarticlepreview.php');
         }
         return true;
@@ -175,10 +176,14 @@ class AdminController extends AdminBase
             $content = $_POST['content'];
             $date = $_POST['date'];
 
-            $filename = $_POST['imgname'];
-            $from = ROOT . "/uploads/temp/$filename";
-            $to = ROOT . "/uploads/images/$filename";//куда переместить файл
-            rename($from, $to);//перемещаем файл
+            if (!empty($_FILES['imagefile']['tmp_name'])) {
+                $filename = $_POST['imgname'];
+                $from = ROOT . "/uploads/temp/$filename";
+                $to = ROOT . "/uploads/images/$filename";//куда переместить файл
+                rename($from, $to);//перемещаем файл
+            } else {
+                $filename = null;
+            }
 
             $result = Admindb::addArticle($title, $content, $date, $filename);
             if (isset($result)) {
@@ -196,7 +201,7 @@ class AdminController extends AdminBase
         if (AdminBase::checkLogged()) {
             Admindb::deleteArticle($id);
             echo 'Статья удалена';
-            echo '<a href="">Вернутся на главную</a>';
+            echo '<a href="/">Вернутся на главную</a>';
         }
         return true;
     }

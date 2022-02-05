@@ -1,7 +1,9 @@
 <main>
     <h1 class="h2-like"><?php echo $result[0]['title']; ?></h1>
     <div class="articlewrapper">
+        <?php if (!empty($result[0]['image'])) {?>
         <div class="articleMainImage" style="background-image: url('../../uploads/images/<?php echo $result[0]['image']; ?>');"></div>
+        <?php } ?>
         <span>
             <?php echo $result[0]['content']; ?>
         </span><br><br>

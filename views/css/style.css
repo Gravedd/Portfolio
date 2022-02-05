@@ -30,7 +30,6 @@ a {
 body {
     background-color: var(--bg-color);
     color: var(--main-color);
-    height: 2000px;
     font-family: OpenSans;
     /*opacity: 0;*/
     transition: 0.5s;
@@ -61,6 +60,7 @@ header {
     width: 75px;
     display: block;
     margin-right: 10px;
+    border-radius: 75px;
 }
 .logowrapper {
     display: flex;
@@ -149,6 +149,7 @@ footer {
     display: flex;
     flex-direction: row;
     font-size: 16pt;
+    margin-bottom: 200px;
 }
 footer div {
     margin-right: 40px;

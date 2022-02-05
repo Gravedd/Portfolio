@@ -16,8 +16,3 @@ require_once ROOT . '/models/adminbase.php';
 //вызов router
 $router = new Router();
 $router ->run();
-
-
-
-
-

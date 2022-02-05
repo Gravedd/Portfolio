@@ -1,9 +1,9 @@
 <?php
 $db = [
-    'host' => 'sql310.unaux.com',
-    'dbname' => 'unaux_30487468_portfolio',
-    'user' => 'unaux_30487468',
-    'password' => 'vp4jfd8rde'
+    'host' => 'localhost',
+    'dbname' => 'portfolio',
+    'user' => 'root',
+    'password' => ''
 ];
 /*соеднинение с БД*/
 $connection = mysqli_connect($db['host'], $db['user'], $db['password'], $db['dbname']);

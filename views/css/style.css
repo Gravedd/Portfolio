@@ -93,6 +93,11 @@ main {
     font-family: Montserrat-light;
     font-weight: normal;
 }
+.h2-like a {
+    margin-left: 16px;
+    font-size: 10pt;
+    letter-spacing: 0px;
+}
 .about {
     display: flex;
     justify-content: space-between;

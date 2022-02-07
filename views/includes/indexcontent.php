@@ -1,5 +1,5 @@
 <main>
-    <div class="h2-like">Обо мне</div>
+    <div class="h2-like">Обо мне<a href="/uploads/Yury%20Senin's%20resume.docx">Скачать резюме в формате документа</a></div>
     <div class="about">
         <!--БЛОК ОБО МНЕ-->
         <div class="leftside" tabindex="0">
@@ -37,6 +37,7 @@
 
         </div>
     </div>
+
 
     <div class="h2-like">Мои проекты</div>
     <div class="other">

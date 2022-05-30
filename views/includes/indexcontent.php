@@ -1,5 +1,9 @@
 <main>
-    <div class="h2-like">Обо мне<a href="/uploads/Yury%20Senin's%20resume.docx">Скачать резюме в формате документа</a></div>
+    <div class="h2-like">Обо мне
+        <a>Скачать резюме:</a>
+        <a href="/uploads/Резюме%20Юрий%20Сенин.pdf">pdf</a>
+        <a href="http://portfolio/uploads/%D0%A0%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5%20%D0%AE%D1%80%D0%B8%D0%B9%20%D0%A1%D0%B5%D0%BD%D0%B8%D0%BD.docx">docx</a>
+    </div>
     <div class="about">
         <!--БЛОК ОБО МНЕ-->
         <div class="leftside" tabindex="0">

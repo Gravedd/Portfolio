@@ -11,7 +11,7 @@
             <h2>
                 <a href="/articles/<?php echo $aboutme[0]['id']; ?>">
                     <?php echo $aboutme[0]['title']; ?></h2>
-            <span class="textart"><?php echo strip_tags($aboutme[0]['content']); ?><br></span>
+            <span class="textart"><?php echo mb_substr(strip_tags($aboutme[0]['content']), 0, 111); ?><br></span>
             <span class="dateart"><?php echo $aboutme[0]['pubdate']; ?></span></a>
             </a>
         </div>
